@@ -1,0 +1,4 @@
+.env
+.env6
+*.env
+.vercel
