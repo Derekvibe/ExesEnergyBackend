@@ -20,7 +20,9 @@ module.exports = async (req, res) => {
 
       const { name, email, subject, message } = req.body;
 
-      // Validate input
+    
+    
+      // To validate the Input
       if (!name || !email || !subject || !message) {
         return res.status(400).json({ error: "All fields are required." });
       }
@@ -71,5 +73,6 @@ module.exports = async (req, res) => {
         .status(500)
         .json({ error: "Internal Server Error", details: error.message });
     }
+
   });
 };
