@@ -2,23 +2,13 @@ const nodemailer = require("nodemailer");
 const cors = require("cors");
 
 const corsMiddleware = cors({
-  origin: "https://exes-energy-frontend.vercel.app",
+  // origin: ["https://exesenergywebsite.vercel.app/", "https://exesenergy.co", "https://www.exesenergy.co/contact"],
+  origin: "*",
   methods: ["POST"],
 });
 
 module.exports = async (req, res) => {
   corsMiddleware(req, res, async () => {
-    // Handle OPTIONS preflight requests
-    if (req.method === "OPTIONS") {
-      res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
-      res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-      res.setHeader(
-        "Access-Control-Allow-Origin",
-        "https://exes-energy-frontend.vercel.app"
-      );
-      return res.status(204).end();
-    }
-
     if (req.method !== "POST") {
       return res.status(405).json({ error: "Method not allowed" });
     }
